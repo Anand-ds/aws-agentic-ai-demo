@@ -1,19 +1,31 @@
-# Simple AWS Agentic AI demo
-# This example shows how an AI agent might call an LLM
-# using AWS Bedrock and LangChain.
-
 from langchain.llms import Bedrock
 
-def architecture_advisor(question):
-    # Initialize Bedrock LLM
-    llm = Bedrock(model_id="anthropic.claude-v2")
+class ArchitectureAgent:
 
-    # Ask the model for architecture advice
-    response = llm(question)
+    def __init__(self):
+        self.llm = Bedrock(
+            model_id="anthropic.claude-v2"
+        )
 
-    return response
+    def ask_architecture_question(self, question):
+        prompt = f"""
+        You are an enterprise architecture advisor.
+
+        Answer the following architecture question:
+
+        {question}
+        """
+
+        response = self.llm(prompt)
+        return response
+
 
 if __name__ == "__main__":
+
+    agent = ArchitectureAgent()
+
     question = "What is a good AWS microservices architecture?"
-    answer = architecture_advisor(question)
+
+    answer = agent.ask_architecture_question(question)
+
     print(answer)
