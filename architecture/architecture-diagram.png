@@ -1,0 +1,11 @@
+User
+ ↓
+API Gateway
+ ↓
+AI Agent (Python)
+ ↓
+AWS Bedrock
+ ↓
+Knowledge Base
+ ↓
+Response
